@@ -11,6 +11,45 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<style>
+		/* Existing styles remain unchanged */
+	
+		/* Updated Modal Styles */
+		.modal {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.8);
+			justify-content: center;
+			align-items: center;
+			z-index: 9999;
+			/* Ensure modal is on top of other elements */
+		}
+	
+		.modal-content {
+			max-width: 80%;
+			max-height: 80%;
+		}
+	
+		.close {
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			color: #fff;
+			font-size: 30px;
+			cursor: pointer;
+		}
+	
+		/* Ensure images within articles do not overflow */
+		.posts article .image {
+			overflow: hidden;
+		}
+	</style>
+
+
 	</head>
 	<body class="is-preload">
 
@@ -43,7 +82,13 @@
 
 				<!-- Main -->
 					<div id="main">
+						
+						<div id="imageModal" class="modal">
+							<span class="close" onclick="closeModal()">&times;</span>
+							<img class="modal-content" id="modalImg" />
+						</div>
 
+						
 						<!-- Featured Post -->
 							<article class="post featured">
 								<header class="major">
@@ -57,9 +102,9 @@
 									web applications. I am also interested in learning computer science and IT Strategy and Management. You can find what I have done and my contact details below.</p>
 								</header>
 								
-								<ul class="actions special">
+								<!-- <ul class="actions special">
 									<li><a href="#" class="button large">Full Story</a></li>
-								</ul>
+								</ul> -->
 							</article>
 
 						<!-- Posts -->
@@ -70,7 +115,9 @@
 										<h2><a href="#">Online Shop<br />
 										Management System</a></h2>
 									</header>
-									<a href="#" class="image fit"><img src="images\online-store-3265497_1280.jpg" alt="" /></a>
+									<a href="javascript:void(0)" class="image fit" onclick="openModal('images/online-store-3265497_1280.jpg')">
+										<img src="images\online-store-3265497_1280.jpg" alt="" />
+									</a>
 									<p>This is a e-commerce website like online shopping.Developed by using Laravel and for reponsive web pages , I have used JS, jQuery, Ajax. Now I am working on this project to add more functions.</p>
 									<ul class="actions special">
 										<li><a href="https://github.com/phoneminmyat102/online-shop-management-system" class="button">Source Codes</a></li>
@@ -83,7 +130,9 @@
 										<h2><a href="#">Voting
 												System</a><br></h2>
 									</header>
-									<a href="#" class="image fit"><img src="images\Voting-image-6-scaled.jpg" alt="" /></a>
+									<a href="javascript:void(0)" class="image fit" onclick="openModal('images/Voting-image-6-scaled.jpg')">
+										<img src="images\Voting-image-6-scaled.jpg" alt="" />
+									</a>
 									<p>This Project is a Python application that enables users to participate in a voting process by casting votes
 									for candidates. This project includes features for user account management, email and password checking, and calculating voting charges.For more detais about this project, click Source Codes.</p>
 									<ul class="actions special">
@@ -98,7 +147,9 @@
 											Project<br>
 										</a></h2>
 									</header>
-									<a href="#" class="image fit"><img src="images\Project-Management-Blogs.png" alt="" /></a>
+									<a href="javascript:void(0)" class="image fit" onclick="openModal('images/Project-Management-Blogs.png')">
+										<img src="images\Project-Management-Blogs.png" alt="" />
+									</a>
 									<p>The project allows users to create content, comment on content, and manage content and comments.
 									Users can delete the content and their own comments.
 									Users can comment on any content, displaying their username. This project is developed by using Laravel.</p>
@@ -112,7 +163,9 @@
 										<h2><a href="#">School<br />
 										Management System</a></h2>
 									</header>
-									<a href="#" class="image fit"><img src="images\200908-studentswearingmasks-stock.jpg" alt="" /></a>
+									<a href="javascript:void(0)" class="image fit" onclick="openModal('images/200908-studentswearingmasks-stock.jpg')">
+										<img src="images\200908-studentswearingmasks-stock.jpg" alt="" />
+									</a>
 									<p>The School Management System is a web-based application designed to streamline administrative tasks, enhance
 									communication, and provide a centralized platform for administrators, teachers, and students. The system includes three
 									main roles: Admin, Teacher, and Student, each with specific functionalities tailored to their needs. Functionalities are 
@@ -128,7 +181,9 @@
 										<h2><a href="#">Home Service<br />
 										System</a></h2>
 									</header>
-									<a href="#" class="image fit"><img src="images\home-services.jpg" alt="" /></a>
+									<a href="javascript:void(0)" class="image fit" onclick="openModal('images/home-services.jpg')">
+										<img src="images\home-services.jpg" alt="" />
+									</a>
 									<p>This is a Laravel Project.This encompasses a platform for booking various home services.
 									There are main service categories and Each includes various detailed services. 
 									Users can browse and select services based on their requirements and book services and modify/cancel bookings before confirmation.
@@ -145,7 +200,9 @@
 										<h2><a href="#">Server-Client<br />
 										Project</a></h2>
 									</header>
-									<a href="#" class="image fit"><img src="images\download.png" alt="" /></a>
+									<a href="javascript:void(0)" class="image fit" onclick="openModal('images/download.png')">
+										<img src="images\download.png" alt="" />
+									</a>
 									<br>
 									<p>This is a python project to connect between client and server(TCP) and it includes features like >> Client request data from server and server send back the response.
 									also can check the registration form by checking if already email exits or not and password correct or not.</p>
@@ -221,11 +278,6 @@
 						</section>
 					</footer>
 
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
-
 			</div>
 
 		<!-- Scripts -->
@@ -236,6 +288,23 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				// Function to open the modal
+				function openModal(imageSrc) {
+					var modal = document.getElementById("imageModal");
+					var modalImg = document.getElementById("modalImg");
+
+					modal.style.display = "flex";
+					modalImg.src = imageSrc;
+				}
+
+				// Function to close the modal
+				function closeModal() {
+					var modal = document.getElementById("imageModal");
+					modal.style.display = "none";
+				}
+			</script>
+
 
 	</body>
 </html>
