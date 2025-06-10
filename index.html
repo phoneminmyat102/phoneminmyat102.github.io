@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="mediaqueries.css" />
   </head>
   <body>
+    <!-- desktop-nav  -->
     <nav id="desktop-nav">
       <div class="logo">PHONE MIN MYAT</div>
       <div>
@@ -20,6 +21,8 @@
         </ul>
       </div>
     </nav>
+
+    <!-- hamburger-nav  -->
     <nav id="hamburger-nav">
       <div class="logo">Phone Min Myat</div>
       <div class="hamburger-menu">
@@ -36,6 +39,8 @@
         </div>
       </div>
     </nav>
+
+    <!-- Profile section  -->
     <section id="profile">
       <div class="section__pic-container">
         <img src="./assets/pmm_profile.jpg" class="profile-pic" alt="Phone Min Myat profile picture" />
@@ -60,7 +65,7 @@
             src="./assets/linkedin.png"
             alt="My LinkedIn profile"
             class="icon"
-            onclick="location.href='https://linkedin.com/'"
+            onclick="location.href='https://www.linkedin.com/in/phone-min-myat-980155296/'"
           />
           <img
             src="./assets/github.png"
@@ -71,359 +76,200 @@
         </div>
       </div>
     </section>
+
+    <!-- About section  -->
     <section id="about">
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
-        <!-- <div class="section__pic-container">
-          <img
-            src="./assets/pmm_profile.jpg"
-            alt="Profile picture"
-            class="about-pic"
-          />
-        </div> -->
-        <div class="about-details-container">
-          <div class="about-containers">
-            <div class="details-container">
-              <img
-                src="./assets/experience.png"
-                alt="Experience icon"
-                class="icon"
-              />
-              <h3>Experience</h3>
-              <p>2 years <br />Web Development</p>
+      <div class="about-wrapper">
+        <div class="about-header">
+          <p class="about-subtitle">Get To Know More</p>
+          <h1 class="about-title">About Me</h1>
+        </div>
+    
+        <div class="about-content">
+          <!-- About Info Cards -->
+          <div class="about-cards">
+            <div class="about-card">
+              <img src="./assets/experience.png" alt="Experience icon" class="about-icon">
+              <h3>Work Experience</h3>
+              <p>2+ Years<br>Web Development</p>
             </div>
-            <div class="details-container">
-              <img 
-                src="./assets/experience.png" 
-                alt="Experience icon" 
-                class="icon" 
-              />
+            <div class="about-card">
+              <img src="./assets/experience.png" alt="Certificate icon" class="about-icon">
               <h3>Certificate</h3>
               <p>ITPEC-FE<br>(Information Technology Professionals Examination Council-Fundamental Information Technology Engineers Examination)</p>
-              
             </div>
-            <div class="details-container">
-              <img src="./assets/experience.png" alt="Experience icon" class="icon" />
-              <h3>Language</h3>
-              <p>Burmese(Native)</p><br>
-              <p>English(Intermediate)</p><br>
-              <p>Japanese(JLPT N3)</p>
+            <div class="about-card">
+              <img src="./assets/experience.png" alt="Language icon" class="about-icon">
+              <h3>Languages</h3>
+              <p>Burmese (Native)<br><br>English (Intermediate)<br><br>Japanese (JLPT N3)</p>
             </div>
           </div>
-          <div class="text-container">
+    
+          <!-- About Description -->
+          <div class="about-text">
             <p>
-              Hello! I’m Phone Min Myat, a web developer who enjoys making websites work smoothly behind the scenes. I have 2 years of
+              Hello! I’m <strong>Phone Min Myat</strong>, a web developer who enjoys making websites work smoothly behind the scenes. I have 2 years of
               backend development experience, mainly using Laravel and FastAPI, and I’m comfortable working across the full web stack
               when needed.
-
+            </p>
+            <p>
               I’m skilled in HTML, CSS (including Tailwind CSS and Bootstrap), JavaScript, PHP, and Python, and have experience with
-              frameworks like Laravel, FastAPI and Vue.js. I use Git for version control and focus on writing clean, maintainable code.
-
+              frameworks like Laravel, FastAPI and Vue.js. I use Git for version control and focus on writing clean, maintainable
+              code.
+            </p>
+            <p>
               Beyond coding, I’m passionate about learning more in Computer Science and Strategy Management to strengthen both my
               technical and problem-solving skills.
-
-              One of my proudest achievements is passing the ITPEC-Fundamental Information Technology Engineers Examination (FE) with the
-              highest score in the Thai region.
-
-              Feel free to check out my recent projects and get in touch using the contact info below.
+            </p>
+            <p>
+              One of my proudest achievements is passing the ITPEC-Fundamental Information Technology Engineers Examination (FE) with
+              the highest score in the Thai region.
+            </p>
+            <p>
+              Feel free to explore my projects or contact me directly!
             </p>
           </div>
         </div>
-
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#experience'"
-      />
+    
+      </div>
+      <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#experience'" />
     </section>
+    
+    <!-- Experience section  -->
     <section id="experience">
-      <p class="section__text__p1">Explore My</p>
-      <h1 class="title">Experience</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <h2 class="experience-sub-title">Frontend Development</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>HTML</h3>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>CSS</h3>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Bootstrap</h3>
-                </div>
-              </article>
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div>
-                  <h3>Tailwind Css</h3>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>JavaScript</h3>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>VueJs</h3>
-                </div>
-              </article>
+      <div class="experience-wrapper">
+        <div class="experience-header">
+          <p class="experience-intro">Explore My</p>
+          <h1 class="experience-title">Experience</h1>
+        </div>
+    
+        <div class="experience-cards">
+          <!-- Frontend -->
+          <div class="experience-card">
+            <h2 class="experience-card-title">Frontend Development</h2>
+            <div class="experience-list">
+              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>HTML</span></div>
+              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>CSS</span></div>
+              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>Bootstrap</span></div>
+              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>Tailwind CSS</span></div>
+              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>JavaScript</span></div>
+              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>Vue.js</span></div>
             </div>
           </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">Backend Development</h2>
-            <div class="article-container">
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div>
-                  <h3>PHP</h3>
-                </div>
-              </article>
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div>
-                  <h3>Laravel</h3>
-                </div>
-              </article>
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div>
-                  <h3>Python</h3>
-                </div>
-              </article>
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div>
-                  <h3>FastApi</h3>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>MySQL</h3>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>MongoDB</h3>
-                </div>
-              </article>
+    
+          <!-- Backend -->
+          <div class="experience-card">
+            <h2 class="experience-card-title">Backend Development</h2>
+            <div class="experience-list">
+              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>PHP</span></div>
+              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>Laravel</span></div>
+              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>Python</span></div>
+              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>FastAPI</span></div>
+              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>Django</span></div>
+              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>Node.js</span></div>
+              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>Express.js</span></div>
+              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>MySQL</span></div>
+              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>MongoDB</span></div>
             </div>
           </div>
         </div>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#projects'"
-      />
+      <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#projects'" />
     </section>
+    
+    <!-- Project section  -->
     <section id="projects">
       <p class="section__text__p1">Browse My Recent</p>
       <h1 class="title">Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project_1.jpg"
-                alt="Project 1"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Live Chat Application</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Github
-              </button>
-              <!-- <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button> -->
+    
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="./assets/project_1.jpg" alt="Live Chat Application" class="project-image" />
+          <div class="project-content">
+            <h3 class="project-name">Live Chat Application</h3>
+            <div class="project-buttons">
+              <a href="https://github.com/" target="_blank" class="btn project-link">GitHub</a>
             </div>
           </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project_2.webp"
-                alt="Project 2"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">MCQ Generator</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Github
-              </button>
-              <!-- <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button> -->
+        </div>
+    
+        <div class="project-card">
+          <img src="./assets/project_2.webp" alt="MCQ Generator" class="project-image" />
+          <div class="project-content">
+            <h3 class="project-name">MCQ Generator</h3>
+            <div class="project-buttons">
+              <a href="https://github.com/" target="_blank" class="btn project-link">GitHub</a>
             </div>
           </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project_3.jpg"
-                alt="Project 3"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Online Shop Management System</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Github
-              </button>
-              <!-- <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button> -->
+        </div>
+
+        <div class="project-card">
+          <img src="./assets/project_3.jpg" alt="Online Shop Management System" class="project-image" />
+          <div class="project-content">
+            <h3 class="project-name">Online Shop Management System</h3>
+            <div class="project-buttons">
+              <a href="https://github.com/" target="_blank" class="btn project-link">GitHub</a>
             </div>
           </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img src="./assets/project_4.jpg" alt="Project 1" class="project-img" />
-            </div>
-            <h2 class="experience-sub-title project-title">Ride Share Application</h2>
-            <div class="btn-container">
-              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/'">
-                Github
-              </button>
-              <!-- <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button> -->
+        </div>
+
+        <div class="project-card">
+          <img src="./assets/project_4.jpg" alt="Ride Share Application" class="project-image" />
+          <div class="project-content">
+            <h3 class="project-name">Ride Share Application</h3>
+            <div class="project-buttons">
+              <a href="https://github.com/" target="_blank" class="btn project-link">GitHub</a>
             </div>
           </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img src="./assets/project_5.webp" alt="Project 2" class="project-img" />
-            </div>
-            <h2 class="experience-sub-title project-title">Expense Management System</h2>
-            <div class="btn-container">
-              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/'">
-                Github
-              </button>
-              <!-- <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button> -->
+        </div>
+
+        <div class="project-card">
+          <img src="./assets/project_5.webp" alt="Expense Management System" class="project-image" />
+          <div class="project-content">
+            <h3 class="project-name">Expense Management System</h3>
+            <div class="project-buttons">
+              <a href="https://github.com/" target="_blank" class="btn project-link">GitHub</a>
             </div>
           </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img src="./assets/project_6.png" alt="Project 3" class="project-img" />
-            </div>
-            <h2 class="experience-sub-title project-title">Invoice Management System</h2>
-            <div class="btn-container">
-              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/'">
-                Github
-              </button>
-              <!-- <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button> -->
+        </div>
+
+        <div class="project-card">
+          <img src="./assets/project_6.png" alt="Invoice Management System" class="project-image" />
+          <div class="project-content">
+            <h3 class="project-name">Invoice Management System</h3>
+            <div class="project-buttons">
+              <a href="https://github.com/" target="_blank" class="btn project-link">GitHub</a>
             </div>
           </div>
         </div>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#contact'"
-      />
+      <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#contact'" />
     </section>
+
+    <!-- Contact section  -->
     <section id="contact">
       <p class="section__text__p1">Get in Touch</p>
       <h1 class="title">Contact Me</h1>
+    
       <div class="contact-info-upper-container">
         <div class="contact-info-container">
-          <img
-            src="./assets/email.png"
-            alt="Email icon"
-            class="icon contact-icon email-icon"
-          />
-          <p class="email-style"><a href="mailto:phoneminmyat102115@gmail.com">phoneminmyat102115@gmail.com</a></p>
+          <img src="./assets/email.png" alt="Email icon" class="icon" />
+          <p class="email"><a href="mailto:phoneminmyat102115@gmail.com">phoneminmyat102115@gmail.com</a></p>
         </div>
+    
         <div class="contact-info-container">
-          <img src="./assets/phone.png" alt="Phone Number icon" class="icon contact-icon" />
-          <p><a href="#">+959797865875</a></p>
+          <img src="./assets/phone.png" alt="Phone icon" class="icon" />
+          <p><a href="tel:+959797865875">+959797865875</a></p>
         </div>
+    
         <div class="contact-info-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="LinkedIn icon"
-            class="icon contact-icon"
-          />
-          <p><a href="https://www.linkedin.com">LinkedIn</a></p>
+          <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon" />
+          <p><a href="https://www.linkedin.com/in/phone-min-myat-980155296/">Visit my LinkedIn</a></p>
         </div>
       </div>
     </section>
+    
+    <!-- Footer  -->
     <footer>
       <nav>
         <div class="nav-links-container">
