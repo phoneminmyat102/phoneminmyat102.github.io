@@ -1,291 +1,1372 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PHONE MIN MYAT</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
+    <title>PHONE MIN MYAT | Software Engineer Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Lucide Icons via CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      :root {
+        /* Light Mode Colors */
+        --bg-primary: #ffffff;
+        --bg-secondary: #f8fafc;
+        --text-primary: #0f172a;
+        --text-secondary: #475569;
+        --accent: #2563eb;
+        --accent-hover: #1d4ed8;
+        --border: #e2e8f0;
+        --card-bg: #ffffff;
+        --nav-bg: rgba(255, 255, 255, 0.8);
+        --shadow:
+          0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      [data-theme="dark"] {
+        /* Dark Mode Colors */
+        --bg-primary: #0f172a;
+        --bg-secondary: #1e293b;
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --accent: #3b82f6;
+        --accent-hover: #60a5fa;
+        --border: #334155;
+        --card-bg: #1e293b;
+        --nav-bg: rgba(15, 23, 42, 0.8);
+        --shadow:
+          0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        line-height: 1.6;
+        transition: var(--transition);
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: var(--transition);
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      section {
+        padding: 100px 0;
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.8s ease-out,
+          transform 0.8s ease-out;
+      }
+
+      section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        text-align: center;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 4px;
+        background: var(--accent);
+        margin: 1rem auto 0;
+        border-radius: 2px;
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background: var(--nav-bg);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        transition: var(--transition);
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--accent);
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: var(--text-secondary);
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--accent);
+      }
+
+      .theme-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+        border-radius: 50%;
+        transition: var(--transition);
+      }
+
+      .theme-toggle:hover {
+        background: var(--bg-secondary);
+      }
+
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text-primary);
+      }
+
+      /* Hero Section */
+      #home {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding-top: 70px;
+      }
+
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .profile-img {
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center top;
+        border: 4px solid var(--accent);
+        padding: 6px;
+        background: var(--bg-primary);
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .profile-img:hover {
+        transform: scale(1.05);
+      }
+
+      .hero-text h1 {
+        font-size: 4rem;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+      }
+
+      .hero-text h2 {
+        font-size: 1.5rem;
+        color: var(--accent);
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      .hero-text p {
+        max-width: 600px;
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        margin: 0 auto 2.5rem;
+      }
+
+      .hero-btns {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+      }
+
+      .btn {
+        padding: 0.8rem 2rem;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: white;
+        border: none;
+      }
+
+      .btn-primary:hover {
+        background: var(--accent-hover);
+        transform: translateY(-2px);
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: 2px solid var(--accent);
+        color: var(--accent);
+      }
+
+      .btn-outline:hover {
+        background: var(--accent);
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* Education & Experience */
+      .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background: var(--border);
+      }
+
+      .timeline-item {
+        position: relative;
+        padding-left: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -6px;
+        top: 0;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--accent);
+        border: 3px solid var(--bg-primary);
+      }
+
+      .timeline-card {
+        background: var(--card-bg);
+        padding: 2rem;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .timeline-card:hover {
+        transform: translateX(10px);
+        border-color: var(--accent);
+      }
+
+      .timeline-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .timeline-date {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--accent);
+        background: rgba(37, 99, 235, 0.1);
+        padding: 0.2rem 0.8rem;
+        border-radius: 20px;
+      }
+
+      .timeline-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .timeline-card h4 {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+      }
+
+      .timeline-card ul {
+        margin-top: 1rem;
+        padding-left: 1.2rem;
+        list-style: disc;
+        color: var(--text-secondary);
+      }
+
+      /* Certificates */
+      .cert-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .cert-card {
+        background: var(--card-bg);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .cert-card:hover {
+        transform: scale(1.03);
+        box-shadow: var(--shadow);
+      }
+
+      .cert-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .cert-info {
+        padding: 1.5rem;
+      }
+
+      .cert-info h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .cert-info p {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+
+      /* Projects */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2.5rem;
+      }
+
+      .project-card {
+        background: var(--card-bg);
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--accent);
+      }
+
+      .project-img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+      }
+
+      .project-content {
+        padding: 2rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project-content h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .project-content p {
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+      }
+
+      .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .tech-tag {
+        font-size: 0.75rem;
+        font-weight: 600;
+        font-family: "JetBrains Mono", monospace;
+        background: var(--bg-secondary);
+        color: var(--text-secondary);
+        padding: 0.3rem 0.7rem;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+      }
+
+      .project-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: auto;
+      }
+
+      .project-links a {
+        flex: 1;
+        text-align: center;
+        padding: 0.6rem;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+      }
+
+      /* Contact Section Redesign */
+      .contact-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .contact-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: rgba(34, 197, 94, 0.1);
+        color: #22c55e;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        background: #22c55e;
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(0.95);
+          box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+        }
+        70% {
+          transform: scale(1);
+          box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+        }
+        100% {
+          transform: scale(0.95);
+          box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+        }
+      }
+
+      .contact-heading {
+        font-size: clamp(2.5rem, 8vw, 4.5rem);
+        line-height: 1;
+        margin-bottom: 3rem;
+        background: linear-gradient(
+          to right,
+          var(--text-primary),
+          var(--accent)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .contact-links-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        width: 100%;
+        margin-bottom: 4rem;
+      }
+
+      .contact-link-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2.5rem;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .contact-link-item:hover {
+        border-color: var(--accent);
+        background: var(--card-bg);
+        transform: translateY(-8px);
+      }
+
+      .contact-link-item i {
+        margin-bottom: 1.5rem;
+        color: var(--accent);
+      }
+
+      .contact-link-item .label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+
+      .contact-link-item .value {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--text-primary);
+        word-break: break-all;
+      }
+
+      .social-footer {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+      }
+
+      .social-footer-link {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--text-secondary);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .social-footer-link:hover {
+        color: var(--accent);
+      }
+
+      @media (max-width: 640px) {
+        .contact-links-grid {
+          grid-template-columns: 1fr;
+        }
+        .contact-link-item {
+          padding: 1.5rem;
+        }
+      }
+
+      .social-btn {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: var(--bg-secondary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--border);
+      }
+
+      .social-btn:hover {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+        transform: translateY(-3px);
+      }
+
+      .contact-form {
+        background: var(--card-bg);
+        padding: 2.5rem;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        font-family: inherit;
+        transition: var(--transition);
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      }
+
+      /* Modal */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(5px);
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+
+      .modal-content {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 8px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        color: white;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0.5rem;
+        border-radius: 50%;
+      }
+
+      /* Footer */
+      footer {
+        padding: 3rem 0;
+        text-align: center;
+        border-top: 1px solid var(--border);
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 968px) {
+        .contact-wrapper {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+        .hero-text h1 {
+          font-size: 3rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 70px;
+          left: 0;
+          width: 100%;
+          background: var(--bg-primary);
+          flex-direction: column;
+          padding: 2rem;
+          gap: 1.5rem;
+          border-bottom: 1px solid var(--border);
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .mobile-menu-btn {
+          display: block;
+        }
+
+        .hero-text h1 {
+          font-size: 2.5rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+      }
+    </style>
   </head>
   <body>
-    <!-- desktop-nav  -->
-    <nav id="desktop-nav">
-      <div class="logo">PHONE MIN MYAT</div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+    <!-- Navigation -->
+    <nav id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="logo">PMM</a>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#certificates" class="nav-link">Certificates</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li>
+            <button
+              class="theme-toggle"
+              id="theme-toggle"
+              title="Toggle Dark Mode"
+            >
+              <i data-lucide="moon" id="theme-icon"></i>
+            </button>
+          </li>
         </ul>
-      </div>
-    </nav>
-
-    <!-- hamburger-nav  -->
-    <nav id="hamburger-nav">
-      <div class="logo">Phone Min Myat</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        <div style="display: flex; align-items: center; gap: 1rem">
+          <button class="mobile-menu-btn" id="mobile-menu-btn">
+            <i data-lucide="menu"></i>
+          </button>
         </div>
       </div>
     </nav>
 
-    <!-- Profile section  -->
-    <section id="profile">
-      <div class="section__pic-container">
-        <img src="./assets/pmm_profile.jpg" class="profile-pic" alt="Phone Min Myat profile picture" />
-      </div>
-      <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Phone Min Myat</h1>
-        <p class="section__text__p2">Web Developer</p>
-        <div class="btn-container">
-          <button
-            class="btn btn-color-2"
-            onclick="window.open('./assets/PMM Resume.pdf')"
-          >
-            Download CV
-          </button>
-          <button class="btn btn-color-1" onclick="location.href='./#contact'">
-            Contact Info
-          </button>
-        </div>
-        <div id="socials-container">
+    <!-- Hero Section -->
+    <section id="home">
+      <div class="container">
+        <div class="hero-content">
           <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://www.linkedin.com/in/phone-min-myat-980155296/'"
+            src="./assets/hot_pmm_profile.jpg"
+            alt="Profile"
+            class="profile-img"
           />
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/phoneminmyat102'"
-          />
+          <div class="hero-text">
+            <h1>PHONE MIN MYAT</h1>
+            <h2>Software Engineer</h2>
+            <p>
+              Building scalable web applications with a focus on clean code,
+              performance, and exceptional user experiences. Specialized in
+              Full-Stack development.
+            </p>
+            <div class="hero-btns">
+              <a href="#projects" class="btn btn-primary">
+                View Projects <i data-lucide="arrow-right" size="18"></i>
+              </a>
+              <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- About section  -->
-    <section id="about">
-      <div class="about-wrapper">
-        <div class="about-header">
-          <p class="about-subtitle">Get To Know More</p>
-          <h1 class="about-title">About Me</h1>
-        </div>
-    
-        <div class="about-content">
-          <!-- About Info Cards -->
-          <div class="about-cards">
-            <div class="about-card">
-              <img src="./assets/experience.png" alt="Experience icon" class="about-icon">
-              <h3>Work Experience</h3>
-              <p>3+ Years<br>Web Development</p>
-            </div>
-            <div class="about-card">
-              <img src="./assets/experience.png" alt="Certificate icon" class="about-icon">
-              <h3>Certificate</h3>
-              <p>ITPEC-FE<br>(Information Technology Professionals Examination Council-Fundamental Information Technology Engineers Examination)</p>
-            </div>
-            <div class="about-card">
-              <img src="./assets/experience.png" alt="Language icon" class="about-icon">
-              <h3>Languages</h3>
-              <p>Burmese (Native)<br><br>English (Intermediate)<br><br>Japanese (JLPT N3)</p>
+    <!-- Education Section -->
+    <section id="education">
+      <div class="container">
+        <h2 class="section-title">Education</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <h3>University of Medicine, Magway</h3>
+                <span class="timeline-date">2019 - 2020 (dropped out)</span>
+              </div>
+              <h4>M.B.B.S</h4>
+              <p>Specialized in Medicine and Surgery.</p>
             </div>
           </div>
-    
-          <!-- About Description -->
-          <div class="about-text">
-            <p>
-              Hello! I’m <strong>Phone Min Myat</strong>, a web developer who enjoys making websites work smoothly behind the scenes. I have over 3 years of
-              backend development experience, mainly using Laravel, Express.js and FastAPI, and I’m comfortable working across the full web stack
-              when needed.
-            </p>
-            <p>
-              I’m skilled in HTML, CSS (including Tailwind CSS and Bootstrap), JavaScript, PHP, and Python, and have experience with
-              frameworks like Laravel, FastAPI and Vue.js. I use Git for version control and focus on writing clean, maintainable
-              code.
-            </p>
-            <p>
-              I also have practical experience in cloud computing, including deploying applications on AWS and using Docker for
-              containerization and environment consistency.
-            </p>
-            <p>
-              Beyond coding, I’m passionate about learning more in Computer Science and Strategy Management to strengthen both my
-              technical and problem-solving skills.
-            </p>
-            <p>
-              One of my proudest achievements is passing the ITPEC-Fundamental Information Technology Engineers Examination (FE) with
-              the highest score in the Thai region.
-            </p>
-            <p>
-              Feel free to explore my projects or contact me directly!
-            </p>
-          </div>
         </div>
-    
       </div>
-      <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#experience'" />
     </section>
-    
-    <!-- Experience section  -->
+
+    <!-- Work Experience Section -->
     <section id="experience">
-      <div class="experience-wrapper">
-        <div class="experience-header">
-          <p class="experience-intro">Explore My</p>
-          <h1 class="experience-title">Experience</h1>
-        </div>
-    
-        <div class="experience-cards">
-          <!-- Frontend -->
-          <div class="experience-card">
-            <h2 class="experience-card-title">Frontend Development</h2>
-            <div class="experience-list">
-              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>HTML</span></div>
-              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>CSS</span></div>
-              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>Bootstrap</span></div>
-              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>Tailwind CSS</span></div>
-              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>JavaScript</span></div>
-              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>Vue.js</span></div>
+      <div class="container">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <h3>InnerWorks</h3>
+                <span class="timeline-date">2025 July - Present</span>
+              </div>
+              <h4>Backend Developer</h4>
+              <ul>
+                <li>
+                  Developed and maintained a comprehensive ERP system for gold
+                  production, integrating modules for permission control,
+                  invoice generation, inventory management, unit of measurement
+                  conversions, staff assignments, and a full financial suite
+                  with double-entry accounting, gold and cash AP/AR management,
+                  AR resolution, and balance sheet reporting.
+                </li>
+                <li>
+                  Collaborated with frontend teams and ensured secure, scalable,
+                  and maintainable code.
+                </li>
+              </ul>
             </div>
           </div>
-    
-          <!-- Backend -->
-          <div class="experience-card">
-            <h2 class="experience-card-title">Backend Development</h2>
-            <div class="experience-list">
-              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>PHP</span></div>
-              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>Laravel</span></div>
-              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>Python</span></div>
-              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>FastAPI</span></div>
-              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>Node.js</span></div>
-              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>Express.js</span></div>
-              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>MySQL</span></div>
-              <div class="experience-item"><img src="./assets/checkmark.png" alt=""><span>MongoDB</span></div>
+          <div class="timeline-item">
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <h3>UOC Tech</h3>
+                <span class="timeline-date">2024 Jan - 2025 Jan</span>
+              </div>
+              <h4>Backend Developer</h4>
+              <ul>
+                <li>
+                  Developed RESTful APIs for a School Management System with
+                  features like role-based authentication and authorization for
+                  teachers, student grading and marking systems, and exam/report
+                  generation.
+                </li>
+                <li>
+                  Integrated Laravel Excel to support data import/export (e.g.,
+                  student marks, grades, attendance reports).
+                </li>
+                <li>
+                  Built backend services for a Restaurant Management System
+                  covering order tracking, menu management, and user
+                  authentication using FastAPI.
+                </li>
+                <li>
+                  Collaborated with frontend teams and ensured secure, scalable,
+                  and maintainable code.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <h3>Freelance Team</h3>
+                <span class="timeline-date">2022 Dec - 2023 Dec</span>
+              </div>
+              <h4>Junior Web Developer</h4>
+              <ul>
+                <li>
+                  Contributed to an Education-learning Platform, debugging
+                  frontend issues and implementing key features including:
+                  Notification system, Invoice management, Image optimization,
+                  End-to-end testing using Cypress.
+                </li>
+                <li>
+                  Worked on both frontend and backend layers, ensuring seamless
+                  integration and a smooth user experience.
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
-      <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#projects'" />
     </section>
-    
-    <!-- Project section  -->
+
+    <!-- Certificates Section -->
+    <section id="certificates">
+      <div class="container">
+        <h2 class="section-title">Certificates</h2>
+        <div class="cert-grid">
+          <div class="cert-card">
+            <img
+              src="./assets/certificate_symbol.avif"
+              alt="ITPEC-FE"
+              class="cert-img"
+            />
+            <div class="cert-info">
+              <h3>
+                ITPEC-FE
+                <br />
+                (Gold Medalist - Thai Region)
+              </h3>
+              <p>IPA / NSTDA | 2024</p>
+            </div>
+          </div>
+          <div class="cert-card">
+            <img
+              src="./assets/certificate_symbol.avif"
+              alt="Cybersecurity"
+              class="cert-img"
+            />
+            <div class="cert-info">
+              <h3>Cybersecurity Fundamentals</h3>
+              <p>IBM | 2026</p>
+            </div>
+          </div>
+          <div class="cert-card">
+            <img
+              src="./assets/certificate_symbol.avif"
+              alt="Cloud Computing"
+              class="cert-img"
+            />
+            <div class="cert-info">
+              <h3>Cloud Computing Fundamentals</h3>
+              <p>IBM | 2026</p>
+            </div>
+          </div>
+          <div class="cert-card">
+            <img
+              src="./assets/certificate_symbol.avif"
+              alt="Cloud Computing"
+              class="cert-img"
+            />
+            <div class="cert-info">
+              <h3>SQL</h3>
+              <p>TestDome | 2025</p>
+            </div>
+          </div>
+          <div class="cert-card">
+            <img
+              src="./assets/certificate_symbol.avif"
+              alt="Cloud Computing"
+              class="cert-img"
+            />
+            <div class="cert-info">
+              <h3>Javascript</h3>
+              <p>TestDome | 2025</p>
+            </div>
+          </div>
+          <div class="cert-card">
+            <img
+              src="./assets/certificate_symbol.avif"
+              alt="Cloud Computing"
+              class="cert-img"
+            />
+            <div class="cert-info">
+              <h3>Vue.js</h3>
+              <p>TestDome | 2025</p>
+            </div>
+          </div>
+          <div class="cert-card">
+            <img
+              src="./assets/certificate_symbol.avif"
+              alt="Cloud Computing"
+              class="cert-img"
+            />
+            <div class="cert-info">
+              <h3>Python</h3>
+              <p>TestDome | 2025</p>
+            </div>
+          </div>
+          <div class="cert-card">
+            <img
+              src="./assets/certificate_symbol.avif"
+              alt="Cloud Computing"
+              class="cert-img"
+            />
+            <div class="cert-info">
+              <h3>PHP</h3>
+              <p>TestDome | 2025</p>
+            </div>
+          </div>
+          <div class="cert-card">
+            <img
+              src="./assets/certificate_symbol.avif"
+              alt="Cloud Computing"
+              class="cert-img"
+            />
+            <div class="cert-info">
+              <h3>Laravel</h3>
+              <p>TestDome | 2025</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
     <section id="projects">
-      <p class="section__text__p1">Browse My Recent</p>
-      <h1 class="title">Projects</h1>
-    
-      <div class="projects-grid">
-        <div class="project-card">
-          <img src="./assets/project_5.avif" alt="Realtime Gaming Platform" class="project-image" />
-          <div class="project-content">
-            <h3 class="project-name">Realtime Gaming Platform</h3>
-            <!-- <div class="project-buttons">
-              <a href="https://github.com/phoneminmyat102" target="_blank" class="btn project-link">GitHub</a>
-            </div> -->
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <img
+              src="./assets/project_1.avif"
+              alt="Project 1"
+              class="project-img"
+            />
+            <div class="project-content">
+              <h3>Realtime Gaming Platform</h3>
+              <div class="project-tech">
+                <span class="tech-tag">PHP</span>
+                <span class="tech-tag">Laravel</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Express.js</span>
+                <span class="tech-tag">Socket.io</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Redis</span>
+              </div>
+              <!-- <div class="project-links">
+                  <a href="#" class="btn-outline"><i data-lucide="github" size="16"></i> GitHub</a>
+                  <a href="#" class="btn-primary"><i data-lucide="external-link" size="16"></i> Live Demo</a>
+              </div> -->
+            </div>
           </div>
-        </div>
-                
-        <div class="project-card">
-          <img src="./assets/project_6.png" alt="Offline AI Chat Bot" class="project-image" />
-          <div class="project-content">
-            <h3 class="project-name">Offline AI Chat Bot</h3>
-            <!-- <div class="project-buttons">
-              <a href="https://github.com/phoneminmyat102" target="_blank" class="btn project-link">GitHub</a>
-            </div> -->
+          <div class="project-card">
+            <img
+              src="./assets/project_2.png"
+              alt="Project 2"
+              class="project-img"
+            />
+            <div class="project-content">
+              <h3>Offline AI Chatbot</h3>
+              <div class="project-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">Vue.js</span>
+                <span class="tech-tag">Llama 3.2</span>
+              </div>
+              <!-- <div class="project-links">
+                  <a href="#" class="btn-outline"><i data-lucide="github" size="16"></i> GitHub</a>
+                  <a href="#" class="btn-primary"><i data-lucide="external-link" size="16"></i> Live Demo</a>
+              </div> -->
+            </div>
           </div>
-        </div>
-
-        <div class="project-card">
-          <img src="./assets/project_1.jpg" alt="Live Chat Application" class="project-image" />
-          <div class="project-content">
-            <h3 class="project-name">Live Chat Application</h3>
-            <!-- <div class="project-buttons">
-              <a href="https://github.com/phoneminmyat102" target="_blank" class="btn project-link">GitHub</a>
-            </div> -->
+          <div class="project-card">
+            <img
+              src="./assets/project_3.jpg"
+              alt="Project 3"
+              class="project-img"
+            />
+            <div class="project-content">
+              <h3>Live Chat Application</h3>
+              <div class="project-tech">
+                <span class="tech-tag">Html</span>
+                <span class="tech-tag">Css</span>
+                <span class="tech-tag">TailwindCss</span>
+                <span class="tech-tag">PHP</span>
+                <span class="tech-tag">Laravel</span>
+                <span class="tech-tag">Javascript</span>
+                <span class="tech-tag">Vue.js</span>
+                <span class="tech-tag">Pusher</span>
+                <span class="tech-tag">Laravel Echo</span>
+                <span class="tech-tag">MySQL</span>
+              </div>
+              <!-- <div class="project-links">
+                  <a href="#" class="btn-outline"><i data-lucide="github" size="16"></i> GitHub</a>
+                  <a href="#" class="btn-primary"><i data-lucide="external-link" size="16"></i> Live Demo</a>
+              </div> -->
+            </div>
           </div>
-        </div>
-    
-        <div class="project-card">
-          <img src="./assets/project_2.webp" alt="MCQ Generator" class="project-image" />
-          <div class="project-content">
-            <h3 class="project-name">MCQ Generator</h3>
-            <!-- <div class="project-buttons">
-              <a href="https://github.com/phoneminmyat102" target="_blank" class="btn project-link">GitHub</a>
-            </div> -->
+          <div class="project-card">
+            <img
+              src="./assets/project_4.png"
+              alt="Project 3"
+              class="project-img"
+            />
+            <div class="project-content">
+              <h3>Professional Community Mobile App</h3>
+              <div class="project-tech">
+                <span class="tech-tag">PHP</span>
+                <span class="tech-tag">Laravel</span>
+                <span class="tech-tag">Laravel Socialite</span>
+                <span class="tech-tag">Redis</span>
+                <span class="tech-tag">MySQL</span>
+              </div>
+              <!-- <div class="project-links">
+                  <a href="#" class="btn-outline"><i data-lucide="github" size="16"></i> GitHub</a>
+                  <a href="#" class="btn-primary"><i data-lucide="external-link" size="16"></i> Live Demo</a>
+              </div> -->
+            </div>
           </div>
-        </div>
-
-        <div class="project-card">
-          <img src="./assets/project_3.jpg" alt="Online Shop Management System" class="project-image" />
-          <div class="project-content">
-            <h3 class="project-name">Online Shop Management System</h3>
-            <!-- <div class="project-buttons">
-              <a href="https://github.com/phoneminmyat102" target="_blank" class="btn project-link">GitHub</a>
-            </div> -->
+          <div class="project-card">
+            <img
+              src="./assets/project_5.jpg"
+              alt="Project 3"
+              class="project-img"
+            />
+            <div class="project-content">
+              <h3>Online Shop Management System</h3>
+              <div class="project-tech">
+                <span class="tech-tag">Html</span>
+                <span class="tech-tag">Css</span>
+                <span class="tech-tag">TailwindCss</span>
+                <span class="tech-tag">PHP</span>
+                <span class="tech-tag">Laravel</span>
+                <span class="tech-tag">Javascript</span>
+                <span class="tech-tag">Inertia.js</span>
+                <span class="tech-tag">Vue.js</span>
+                <span class="tech-tag">Flowbite UI</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Stripe Payment Gateway</span>
+              </div>
+              <!-- <div class="project-links">
+                  <a href="#" class="btn-outline"><i data-lucide="github" size="16"></i> GitHub</a>
+                  <a href="#" class="btn-primary"><i data-lucide="external-link" size="16"></i> Live Demo</a>
+              </div> -->
+            </div>
           </div>
-        </div>
-
-        <div class="project-card">
-          <img src="./assets/project_4.jpg" alt="Ride Share Application" class="project-image" />
-          <div class="project-content">
-            <h3 class="project-name">Ride Share Application</h3>
-            <!-- <div class="project-buttons">
-              <a href="https://github.com/phoneminmyat102" target="_blank" class="btn project-link">GitHub</a>
-            </div> -->
+          <div class="project-card">
+            <img
+              src="./assets/project_6.jpg"
+              alt="Project 3"
+              class="project-img"
+            />
+            <div class="project-content">
+              <h3>Ride Share App</h3>
+              <div class="project-tech">
+                <span class="tech-tag">Html</span>
+                <span class="tech-tag">Css</span>
+                <span class="tech-tag">PHP</span>
+                <span class="tech-tag">Laravel</span>
+                <span class="tech-tag">Javascript</span>
+                <span class="tech-tag">Vue.js</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Laravel Websocket</span>
+              </div>
+              <!-- <div class="project-links">
+                  <a href="#" class="btn-outline"><i data-lucide="github" size="16"></i> GitHub</a>
+                  <a href="#" class="btn-primary"><i data-lucide="external-link" size="16"></i> Live Demo</a>
+              </div> -->
+            </div>
           </div>
         </div>
       </div>
-      <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#contact'" />
     </section>
 
-    <!-- Contact section  -->
+    <!-- Contact Section -->
     <section id="contact">
-      <p class="section__text__p1">Get in Touch</p>
-      <h1 class="title">Contact Me</h1>
-    
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img src="./assets/email.png" alt="Email icon" class="icon" />
-          <p class="email"><a href="mailto:phoneminmyat102115@gmail.com">phoneminmyat102115@gmail.com</a></p>
-        </div>
-    
-        <div class="contact-info-container">
-          <img src="./assets/phone.png" alt="Phone icon" class="icon" />
-          <p><a href="tel:+959797865875">+959797865875</a></p>
-        </div>
-    
-        <div class="contact-info-container">
-          <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon" />
-          <p><a href="https://www.linkedin.com/in/phone-min-myat-980155296/">Visit my LinkedIn</a></p>
+      <div class="container">
+        <div class="contact-wrapper">
+          <div class="contact-status">
+            <span class="status-dot"></span>
+            Available for new projects
+          </div>
+
+          <h2 class="contact-heading">Let's build something great together.</h2>
+
+          <div class="contact-links-grid">
+            <a
+              href="mailto:phoneminmyat102115@gmail.com"
+              class="contact-link-item"
+            >
+              <i data-lucide="mail" size="32"></i>
+              <span class="label">Email Me</span>
+              <span class="value">phoneminmyat102115@gmail.com</span>
+            </a>
+
+            <a href="tel:+959797865875" class="contact-link-item">
+              <i data-lucide="phone" size="32"></i>
+              <span class="label">Call Me</span>
+              <span class="value">+959797865875</span>
+            </a>
+          </div>
+
+          <div class="social-footer">
+            <a
+              href="https://github.com/phoneminmyat102"
+              class="social-footer-link"
+              ><i data-lucide="github" size="20"></i> GitHub</a
+            >
+            <a
+              href="https://www.linkedin.com/in/phone-min-myat-980155296/"
+              class="social-footer-link"
+              ><i data-lucide="linkedin" size="20"></i> LinkedIn</a
+            >
+          </div>
         </div>
       </div>
     </section>
-    
-    <!-- Footer  -->
+
+    <!-- Modal for Certificates -->
+    <div class="modal" id="cert-modal">
+      <span class="close-modal" id="close-modal"><i data-lucide="x"></i></span>
+      <img
+        src=""
+        alt="Certificate Preview"
+        class="modal-content"
+        id="modal-img"
+      />
+    </div>
+
     <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-      <p>Copyright &#169; 2026 Phone Min Myat. All Rights Reserved.</p>
+      <div class="container">
+        <p>&copy; 2026 Phone Min Myat. Built with passion and clean code.</p>
+      </div>
     </footer>
-    <script src="script.js"></script>
+
+    <script>
+      // Initialize Lucide Icons
+      lucide.createIcons();
+
+      // Theme Toggle Logic
+      const themeToggle = document.getElementById("theme-toggle");
+      const themeIcon = document.getElementById("theme-icon");
+      const body = document.body;
+
+      // Check for saved theme
+      const savedTheme = localStorage.getItem("theme") || "light";
+      body.setAttribute("data-theme", savedTheme);
+      updateThemeIcon(savedTheme);
+
+      themeToggle.addEventListener("click", () => {
+        const currentTheme = body.getAttribute("data-theme");
+        const newTheme = currentTheme === "light" ? "dark" : "light";
+
+        body.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        updateThemeIcon(newTheme);
+      });
+
+      function updateThemeIcon(theme) {
+        const iconName = theme === "light" ? "moon" : "sun";
+        themeIcon.setAttribute("data-lucide", iconName);
+        lucide.createIcons();
+      }
+
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const navLinks = document.getElementById("nav-links");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        const icon = mobileMenuBtn.querySelector("i");
+        const isMenuOpen = navLinks.classList.contains("active");
+        icon.setAttribute("data-lucide", isMenuOpen ? "x" : "menu");
+        lucide.createIcons();
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+          const icon = mobileMenuBtn.querySelector("i");
+          icon.setAttribute("data-lucide", "menu");
+          lucide.createIcons();
+        });
+      });
+
+      // Scroll Reveal Animation
+      const observerOptions = {
+        threshold: 0.1,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll("section").forEach((section) => {
+        observer.observe(section);
+      });
+
+      // Active Link on Scroll
+      window.addEventListener("scroll", () => {
+        let current = "";
+        const sections = document.querySelectorAll("section");
+        const navItems = document.querySelectorAll(".nav-link");
+
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (pageYOffset >= sectionTop - 150) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navItems.forEach((item) => {
+          item.classList.remove("active");
+          if (item.getAttribute("href").slice(1) === current) {
+            item.classList.add("active");
+          }
+        });
+      });
+
+      // Modal Logic
+      const modal = document.getElementById("cert-modal");
+      const modalImg = document.getElementById("modal-img");
+      const closeModal = document.getElementById("close-modal");
+
+      function openModal(imgSrc) {
+        modal.style.display = "flex";
+        modalImg.src = imgSrc;
+        document.body.style.overflow = "hidden";
+      }
+
+      closeModal.addEventListener("click", () => {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+      });
+
+      window.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.style.display = "none";
+          document.body.style.overflow = "auto";
+        }
+      });
+
+      document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+      });
+    </script>
   </body>
 </html>
